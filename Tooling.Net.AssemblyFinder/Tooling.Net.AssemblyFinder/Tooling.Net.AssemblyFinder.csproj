@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
+    <Authors>MACK Mathieu</Authors>
+    <Company />
+    <Product>Tooling.Net.AssemblyFinder</Product>
+    <PackageProjectUrl>https://github.com/mathieumack/Tooling.Net.AssemblyFinder</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/mathieumack/Tooling.Net.AssemblyFinder/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tooling.Net.AssemblyFinder", "Tooling.Net.AssemblyFinder\Tooling.Net.AssemblyFinder.csproj", "{FE7D14E0-6B31-4B7F-AF62-D443D97E1078}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tooling.Net.AssemblyFinder", "Tooling.Net.AssemblyFinder\Tooling.Net.AssemblyFinder.csproj", "{FE7D14E0-6B31-4B7F-AF62-D443D97E1078}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tooling.Net.AssemblyFinder.Tests", "Tooling.Net.AssemblyFinder.Tests\Tooling.Net.AssemblyFinder.Tests.csproj", "{E3F969A9-EEB2-4BB1-8BEA-1647499E2CA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{F148AD5B-A146-43E0-A9CE-850905216B04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7E6239E2-D246-4EDE-8183-0B7C59B5643B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Libraries", "Tests.Libraries\Tests.Libraries.csproj", "{B4BDFE32-CE6C-49DC-91CA-5A4B16E455FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,22 @@ Global
 		{FE7D14E0-6B31-4B7F-AF62-D443D97E1078}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE7D14E0-6B31-4B7F-AF62-D443D97E1078}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE7D14E0-6B31-4B7F-AF62-D443D97E1078}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3F969A9-EEB2-4BB1-8BEA-1647499E2CA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3F969A9-EEB2-4BB1-8BEA-1647499E2CA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3F969A9-EEB2-4BB1-8BEA-1647499E2CA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3F969A9-EEB2-4BB1-8BEA-1647499E2CA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4BDFE32-CE6C-49DC-91CA-5A4B16E455FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4BDFE32-CE6C-49DC-91CA-5A4B16E455FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4BDFE32-CE6C-49DC-91CA-5A4B16E455FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4BDFE32-CE6C-49DC-91CA-5A4B16E455FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE7D14E0-6B31-4B7F-AF62-D443D97E1078} = {F148AD5B-A146-43E0-A9CE-850905216B04}
+		{E3F969A9-EEB2-4BB1-8BEA-1647499E2CA8} = {7E6239E2-D246-4EDE-8183-0B7C59B5643B}
+		{B4BDFE32-CE6C-49DC-91CA-5A4B16E455FC} = {7E6239E2-D246-4EDE-8183-0B7C59B5643B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A68AEEDE-0912-47D1-821B-15835A00D0F2}

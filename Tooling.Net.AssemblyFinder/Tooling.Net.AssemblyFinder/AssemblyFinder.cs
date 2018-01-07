@@ -13,7 +13,7 @@ namespace Tooling.Net.AssemblyFinder
         #region Fields
 
         private readonly bool loadAppDomainAssemblies = true;
-        private readonly string assemblySkipLoadingPattern = "^System|^mscorlib|^Microsoft";
+        private readonly string assemblySkipLoadingPattern = "^System|^mscorlib|^Microsoft|^MSTest|^runtime.|^NETStandard";
         private readonly string assemblyRestrictToLoadingPattern = ".*";
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Tooling.Net.AssemblyFinder
         public IList<string> AssemblyNames { get; set; } = new List<string>();
 
         #endregion
-
+        
         #region Nested classes
 
         private class AttributedAssembly
@@ -55,13 +55,8 @@ namespace Tooling.Net.AssemblyFinder
         {
             return FindClassesOfType(assignTypeFrom, GetAssemblies(), onlyConcreteClasses);
         }
-
-        public IEnumerable<Type> FindClassesOfType<T>(IEnumerable<Assembly> assemblies, bool onlyConcreteClasses = true)
-        {
-            return FindClassesOfType(typeof(T), assemblies, onlyConcreteClasses);
-        }
-
-        public IEnumerable<Type> FindClassesOfType(Type assignTypeFrom, IEnumerable<Assembly> assemblies, bool onlyConcreteClasses = true)
+        
+        private IEnumerable<Type> FindClassesOfType(Type assignTypeFrom, IEnumerable<Assembly> assemblies, bool onlyConcreteClasses = true)
         {
             var result = new List<Type>();
             try
@@ -136,6 +131,7 @@ namespace Tooling.Net.AssemblyFinder
                 }
             }
         }
+
         private bool IsCandidateCompilationLibrary(RuntimeLibrary compilationLibrary)
         {
             return compilationLibrary.Name == ("Specify")
@@ -152,7 +148,7 @@ namespace Tooling.Net.AssemblyFinder
             foreach (string assemblyName in AssemblyNames)
             {
                 Assembly assembly = Assembly.Load(new AssemblyName(assemblyName));
-                if (!addedAssemblyNames.Contains(assembly.FullName))
+                if (Matches(assembly.FullName) && !addedAssemblyNames.Contains(assembly.FullName))
                 {
                     assemblies.Add(assembly);
                     addedAssemblyNames.Add(assembly.FullName);
@@ -202,16 +198,7 @@ namespace Tooling.Net.AssemblyFinder
         {
             try
             {
-                var genericTypeDefinition = openGeneric.GetGenericTypeDefinition();
-                foreach (var implementedInterface in type.FindInterfaces((objType, objCriteria) => true, null))
-                {
-                    if (!implementedInterface.IsGenericType)
-                        continue;
-
-                    var isMatch = genericTypeDefinition.GetTypeInfo().IsAssignableFrom(implementedInterface.GetGenericTypeDefinition());
-                    return isMatch;
-                }
-                return false;
+                return openGeneric.IsAssignableFrom(type.GetGenericTypeDefinition());
             }
             catch
             {
