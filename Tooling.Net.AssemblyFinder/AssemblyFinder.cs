@@ -5,10 +5,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Tooling.Net.AssemblyFinder.Core;
 
 namespace Tooling.Net.AssemblyFinder
 {
-    public class AssemblyFinder
+    public class AssemblyFinder : IAssemblyFinder
     {
         #region Fields
 
@@ -97,7 +98,7 @@ namespace Tooling.Net.AssemblyFinder
 
         /// <summary>Gets tne assemblies related to the current implementation.</summary>
         /// <returns>A list of assemblies that should be loaded by the Nop factory.</returns>
-        public virtual IList<Assembly> GetAssemblies()
+        public IList<Assembly> GetAssemblies()
         {
             var addedAssemblyNames = new List<string>();
             var assemblies = new List<Assembly>();
@@ -165,7 +166,7 @@ namespace Tooling.Net.AssemblyFinder
         /// <returns>
         /// True if the assembly should be loaded into Nop.
         /// </returns>
-        public virtual bool Matches(string assemblyFullName)
+        private bool Matches(string assemblyFullName)
         {
             return !Matches(assemblyFullName, assemblySkipLoadingPattern)
                    && Matches(assemblyFullName, assemblyRestrictToLoadingPattern);
@@ -183,7 +184,7 @@ namespace Tooling.Net.AssemblyFinder
         /// <returns>
         /// True if the pattern matches the assembly name.
         /// </returns>
-        protected virtual bool Matches(string assemblyFullName, string pattern)
+        private bool Matches(string assemblyFullName, string pattern)
         {
             return Regex.IsMatch(assemblyFullName, pattern, RegexOptions.IgnoreCase | RegexOptions.Compiled);
         }
@@ -194,7 +195,7 @@ namespace Tooling.Net.AssemblyFinder
         /// <param name="type"></param>
         /// <param name="openGeneric"></param>
         /// <returns></returns>
-        protected virtual bool DoesTypeImplementOpenGeneric(Type type, Type openGeneric)
+        private bool DoesTypeImplementOpenGeneric(Type type, Type openGeneric)
         {
             try
             {
@@ -208,5 +209,4 @@ namespace Tooling.Net.AssemblyFinder
 
         #endregion
     }
-
 }

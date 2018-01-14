@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.2.0</Version>
+    <Authors>MACK Mathieu</Authors>
+    <Company>MACK Mathieu</Company>
+    <PackageLicenseUrl>https://github.com/mathieumack/Tooling.Net.AssemblyFinder/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mathieumack/Tooling.Net.AssemblyFinder/</PackageProjectUrl>
+  </PropertyGroup>
+
+</Project>
